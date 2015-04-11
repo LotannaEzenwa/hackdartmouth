@@ -1,2 +1,43 @@
-/* jquery.scrolly v1.0.0-dev | (c) n33 | n33.co @n33co | MIT */
-(function(e){function u(s,o){var u,a,f;if((u=e(s))[t]==0)return n;a=u[i]()[r];switch(o.anchor){case"middle":f=a-(e(window).height()-u.outerHeight())/2;break;default:case r:f=Math.max(a,0)}return typeof o[i]=="function"?f-=o[i]():f-=o[i],f}var t="length",n=null,r="top",i="offset",s="click.scrolly",o=e(window);e.fn.scrolly=function(i){var o,a,f,l,c=e(this);if(this[t]==0)return c;if(this[t]>1){for(o=0;o<this[t];o++)e(this[o]).scrolly(i);return c}l=n,f=c.attr("href");if(f.charAt(0)!="#"||f[t]<2)return c;a=jQuery.extend({anchor:r,easing:"swing",offset:0,parent:e("body,html"),pollOnce:!1,speed:1e3},i),a.pollOnce&&(l=u(f,a)),c.off(s).on(s,function(e){var t=l!==n?l:u(f,a);t!==n&&(e.preventDefault(),a.parent.stop().animate({scrollTop:t},a.speed,a.easing))})}})(jQuery);
+$(function() {
+    $('.error').hide();
+    $(".button").click(function() {
+      // validate and process form here
+      
+      $('.error').hide();
+  	  var email = $("input#email").val();
+  		if (email == "" || email.length() < 4) {
+        $("label#email_error").show();
+        $("input#email").focus();
+        return false;
+      }
+  		var username = $("input#username").val();
+  		if (username == "" || username.length() < 3) {
+        $("label#username_error").show();
+        $("input#username").focus();
+        return false;
+      }
+  		var password = $("input#password").val();
+  		if (password == "" || password.length() < 6) {
+        $("label#password_error").show();
+        $("input#password").focus();
+        return false;
+      }
+      var dataString = 'email='+ email + '&username=' + username + '&password=' + password;
+	  //alert (dataString);return false;
+	  $.ajax({
+	    type: "POST",
+	    url: "/register",
+	    data: dataString,
+	    success: function() {
+	      $('#register_form').html("<div id='message'></div>");
+	      $('#message').html("<h2>Registration Submitted!</h2>")
+	      .append("<p>Please <a href="login">login</a> now.</p>")
+	      .hide()
+	      // .fadeIn(1500, function() {
+	      //   $('#message').append("<img id='checkmark' src='images/check.png' />");
+	      // });
+	    }
+	  });
+	  return false;
+    });
+  });

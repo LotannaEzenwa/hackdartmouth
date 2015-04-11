@@ -19,6 +19,7 @@
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
+		<script src="js/register.js"></script>
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -70,27 +71,30 @@
 				<!-- </header> -->
 
 				<section class="wrapper style4 container">
-					<div class='register'>
-						<h2>Register</h2>
-							<form id="formoid" action="create.php" title="" method="post">
+					<div class='register_form'>
+						<h2><strong>Register</strong></h2>
+						<form name="register" action="">
+							<!-- <form id="formoid" action="create.php" title="" method="post"> -->
 								<div>
 									<input type="text" placeholder='Email Address' id="email" name="email" >
+									<!-- <label class="error" for="email" id="email_error">Please enter a valid email address.</label> -->
 						        </div>
 						        <div>
 						            <!-- <label class="title">First Name</label> -->
 						            <input type="text" placeholder='Username' id="username" name="username" >
+						            <!-- <label class="error" for="username" id="username_error">Your username must be at least 3 characters.</label> -->
 						        </div>
 						        <div>
+						        	<!-- <input type="text" placeholder='Password' id="password" name="password" > -->
 						            <input type="password" placeholder='Password' id="password" name="password" >
+						            <!-- <label class="error" for="password" id="password_error">Your password must be at least 6 characters.</label> -->
 						        </div>
 						        <div>
-						            <input type="submit" id="submitButton"  name="submitButton" value="REGISTER">
+						            <input type="submit" name="submit" class="button" id="submit_btn" value="REGISTER"/>
 						        </div>
 							 </form>
-						<!-- <input name='username' placeholder='Username' type='text'> -->
-						<!-- <input id='pw' name='password' placeholder='Password' type='password'> -->
-						<!-- <input name='email' placeholder='E-Mail Address' type='text'> -->
-							<script type='text/javascript'>
+							 <div id="result"></div>
+							 <script type='text/javascript'>
 							    /* attach a submit handler to the form */
 							    $("#formoid").submit(function(event) {
 
@@ -113,7 +117,7 @@
 							<br> </br>
 							<a class='forgot' href='login.html'>Already have an account?</a>
 						</div>
-						
+
 					</section>
     });
 </script>
