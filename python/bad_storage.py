@@ -6,30 +6,31 @@ import os
 	and rewriting to it every time '''
 
 def load_users():
-	d = os.listdir('.')
+	d = os.listdir('./python')
+	print d
 	if not 'users.json' in d:
-		open('users.json','w').close()
+		open('./python/users.json','w').close()
 		users = {}
 	else:
-		users = json.loads(open('users.json','r').read())
+		users = json.loads(open('./python/users.json','r').read())
 	return users
 
 def load_comments():
-	d = os.listdir('.')
+	d = os.listdir('./python')
 	if not 'comments.json' in d:
-		open('comments.json','w').close()
+		open('./python/comments.json','w').close()
 		comments = {}
 	else:
-		comments = json.loads(open('comments.json','r').read())
+		comments = json.loads(open('./python/comments.json','r').read())
 	return comments
 
 def save_users(users):
-	out = open('users.json', 'w')
+	out = open('./python/users.json', 'w')
 	out.write(json.dumps(users))
 	out.close()
 
 def save_comments(comments):
-	out = open('users.json', 'w')
+	out = open('./python/users.json', 'w')
 	out.write(json.dumps(users))
 	out.close()
 
