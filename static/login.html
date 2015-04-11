@@ -11,6 +11,7 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery-1.9.1.js"></script>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/jquery.dropotron.min.js"></script>
 		<script src="js/jquery.scrolly.min.js"></script>
@@ -18,7 +19,6 @@
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
-		<script src="js/register.js"></script>
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -63,31 +63,77 @@
 		<!-- Main -->
 			<article id="main">
 
-				<header class="special container">
-					<span class="icon fa-users"></span>
+				<!-- <header class="special container"> -->
+					<!-- <span class="icon fa-users"></span> -->
 					<!-- <h2><strong>Sign up</strong> to get started</h2> -->
 					<!-- <p>Where that in the center faces the nameless horrors alone.</p> -->
-				</header>
+				<!-- </header> -->
 
 				<section class="wrapper style4 container">
-					<div class='login'>
-						<h2>Register</h2>
-						<input name='username' placeholder='Username' type='text'>
-						<!-- <br> </br> -->
-						<input id='pw' name='password' placeholder='Password' type='password'>
-						<!-- <br> </br> -->
-						<input name='email' placeholder='E-Mail Address' type='text'>
-						<div class='agree'>
-							<input id='agree' name='agree' type='checkbox'>
-							<!-- <label for='agree'></label>Accept rules and conditions</div> -->
-							<input class='animated' type='submit' value='Register'>
-							<br> </br>
-							<a class='forgot' href='login.html'>Already have an account?</a>
+					<div class='register_form'>
+						<h2><strong>Login</strong></h2>
+						<form name="register" method="post" action="/login">
+							<!-- <form id="formoid" action="create.php" title="" method="post"> -->
+						        <div>
+						            <!-- <label class="title">First Name</label> -->
+						            <input type="text" placeholder='Username' id="username" name="username" >
+						            <!-- <label class="error" for="username" id="username_error">Your username must be at least 3 characters.</label> -->
+						        </div>
+						        <div>
+						        	<!-- <input type="text" placeholder='Password' id="password" name="password" > -->
+						            <input type="password" placeholder='Password' id="password" name="password" >
+						            <!-- <label class="error" for="password" id="password_error">Your password must be at least 6 characters.</label> -->
+						        </div>
+						        <div>
+						            <input type="submit" name="submit" class="button" id="submit_btn" value="LOGIN"/>
+						        </div>
+							 </form>
 						</div>
 					</section>
+					<script>
+					    var createAllErrors = function() {
+					        var form = $( this ),
+					            errorList = $( "ul.errorMessages", form );
 
-<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'> -->
-<!-- <link href='http://fonts.googleapis.com/css?family=Sofia' rel='stylesheet' type='text/css'> -->
+					        var showAllErrorMessages = function() {
+					            errorList.empty();
+
+					            // Find all invalid fields within the form.
+					            var invalidFields = form.find( ":invalid" ).each( function( index, node ) {
+
+					                // Find the field's corresponding label
+					                var label = $( "label[for=" + node.id + "] "),
+					                    // Opera incorrectly does not fill the validationMessage property.
+					                    message = node.validationMessage || 'Invalid value.';
+
+					                errorList
+					                    .show()
+					                    .append( "<li><span>" + label.html() + "</span> " + message + "</li>" );
+					            });
+					        };
+
+					        // Support Safari
+					        form.on( "submit", function( event ) {
+					            if ( this.checkValidity && !this.checkValidity() ) {
+					                $( this ).find( ":invalid" ).first().focus();
+					                event.preventDefault();
+					            }
+					        });
+
+					        $( "input[type=submit], button:not([type=button])", form )
+					            .on( "click", showAllErrorMessages);
+
+					        $( "input", form ).on( "keypress", function( event ) {
+					            var type = $( this ).attr( "type" );
+					            if ( /date|email|month|number|search|tel|text|time|url|week/.test ( type )
+					              && event.keyCode == 13 ) {
+					                showAllErrorMessages();
+					            }
+					        });
+					    };
+
+					    $( "form" ).each( createAllErrors );
+					</script>
 
 
 				<!-- One -->

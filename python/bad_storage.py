@@ -12,25 +12,29 @@ def load_users():
 		open('./python/users.json','w').close()
 		users = {}
 	else:
-		users = json.loads(open('./python/users.json','r').read())
+		fl = open('./python/users.json','r')
+		users = json.loads(fl.read())
+		fl.close()
 	return users
 
-def load_comments():
+def load_arguments():
 	d = os.listdir('./python')
-	if not 'comments.json' in d:
-		open('./python/comments.json','w').close()
-		comments = {}
+	if not 'arguments.json' in d:
+		open('./python/arguments.json','w').close()
+		arguments = {}
 	else:
-		comments = json.loads(open('./python/comments.json','r').read())
-	return comments
+		fl = open('./python/arguments.json','r')
+		arguments = json.loads(fl.read())
+		fl.close()
+	return arguments
 
 def save_users(users):
 	out = open('./python/users.json', 'w')
 	out.write(json.dumps(users))
 	out.close()
 
-def save_comments(comments):
-	out = open('./python/users.json', 'w')
+def save_arguments(arguments):
+	out = open('./python/arguments.json', 'w')
 	out.write(json.dumps(users))
 	out.close()
 
