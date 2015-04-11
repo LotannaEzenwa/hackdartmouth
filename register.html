@@ -11,6 +11,7 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery-1.9.1.js"></script>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/jquery.dropotron.min.js"></script>
 		<script src="js/jquery.scrolly.min.js"></script>
@@ -18,7 +19,6 @@
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
-		<script src="js/register.js"></script>
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -63,28 +63,60 @@
 		<!-- Main -->
 			<article id="main">
 
-				<header class="special container">
-					<span class="icon fa-users"></span>
+				<!-- <header class="special container"> -->
+					<!-- <span class="icon fa-users"></span> -->
 					<!-- <h2><strong>Sign up</strong> to get started</h2> -->
 					<!-- <p>Where that in the center faces the nameless horrors alone.</p> -->
-				</header>
+				<!-- </header> -->
 
 				<section class="wrapper style4 container">
-					<div class='login'>
+					<div class='register'>
 						<h2>Register</h2>
-						<input name='username' placeholder='Username' type='text'>
-						<!-- <br> </br> -->
-						<input id='pw' name='password' placeholder='Password' type='password'>
-						<!-- <br> </br> -->
-						<input name='email' placeholder='E-Mail Address' type='text'>
-						<div class='agree'>
-							<input id='agree' name='agree' type='checkbox'>
-							<!-- <label for='agree'></label>Accept rules and conditions</div> -->
-							<input class='animated' type='submit' value='Register'>
+							<form id="formoid" action="create.php" title="" method="post">
+								<div>
+									<input type="text" placeholder='Email Address' id="email" name="email" >
+						        </div>
+						        <div>
+						            <!-- <label class="title">First Name</label> -->
+						            <input type="text" placeholder='Username' id="username" name="username" >
+						        </div>
+						        <div>
+						            <input type="password" placeholder='Password' id="password" name="password" >
+						        </div>
+						        <div>
+						            <input type="submit" id="submitButton"  name="submitButton" value="REGISTER">
+						        </div>
+							 </form>
+						<!-- <input name='username' placeholder='Username' type='text'> -->
+						<!-- <input id='pw' name='password' placeholder='Password' type='password'> -->
+						<!-- <input name='email' placeholder='E-Mail Address' type='text'> -->
+							<script type='text/javascript'>
+							    /* attach a submit handler to the form */
+							    $("#formoid").submit(function(event) {
+
+							      /* stop form from submitting normally */
+							      event.preventDefault();
+
+							      /* get some values from elements on the page: */
+							      var $form = $( this ),
+							          url = $form.attr( 'action' );
+
+							      /* Send the data using post */
+							      var posting = $.post( url, { email: $('#email').val(), username: $('#username').val(), password: $('#password').val() } );
+
+							      /* Alerts the results */
+							      posting.done(function( data ) {
+							        alert('success');
+							      });
+							    });
+							</script>
 							<br> </br>
 							<a class='forgot' href='login.html'>Already have an account?</a>
 						</div>
+						
 					</section>
+    });
+</script>
 
 <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'> -->
 <!-- <link href='http://fonts.googleapis.com/css?family=Sofia' rel='stylesheet' type='text/css'> -->
