@@ -93,34 +93,10 @@
 						            <input type="submit" name="submit" class="button" id="submit_btn" value="REGISTER"/>
 						        </div>
 							 </form>
-							 <div id="result"></div>
-							 <script type='text/javascript'>
-							    /* attach a submit handler to the form */
-							    $("#formoid").submit(function(event) {
-
-							      /* stop form from submitting normally */
-							      event.preventDefault();
-
-							      /* get some values from elements on the page: */
-							      var $form = $( this ),
-							          url = $form.attr( 'action' );
-
-							      /* Send the data using post */
-							      var posting = $.post( url, { email: $('#email').val(), username: $('#username').val(), password: $('#password').val() } );
-
-							      /* Alerts the results */
-							      posting.done(function( data ) {
-							        alert('success');
-							      });
-							    });
-							</script>
 							<br> </br>
 							<a class='forgot' href='login.html'>Already have an account?</a>
 						</div>
-
 					</section>
-    });
-</script>
 
 <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'> -->
 <!-- <link href='http://fonts.googleapis.com/css?family=Sofia' rel='stylesheet' type='text/css'> -->
