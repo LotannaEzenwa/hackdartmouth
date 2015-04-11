@@ -76,21 +76,26 @@
 						<form name="register" action="">
 							<!-- <form id="formoid" action="create.php" title="" method="post"> -->
 								<div>
+									<label for="email"></label>
 									<input type="text" placeholder='Email Address' id="email" name="email" required>
 									<!-- <label class="error" for="email" id="email_error">Please enter a valid email address.</label> -->
 						        </div>
 						        <div>
 						            <!-- <label class="title">First Name</label> -->
+						            <label for="username"></label>
 						            <input type="text" placeholder='Username' id="username" name="username" required>
 						            <!-- <label class="error" for="username" id="username_error">Your username must be at least 3 characters.</label> -->
 						        </div>
 						        <div>
+						        	<label for="password"></label>
 						        	<!-- <input type="text" placeholder='Password' id="password" name="password" > -->
 						            <input type="password" placeholder='Password' id="password" name="password" required>
 						            <!-- <label class="error" for="password" id="password_error">Your password must be at least 6 characters.</label> -->
 						        </div>
-						        <div>
-						            <input type="submit" name="submit" class="button" id="submit_btn" value="REGISTER"/>
+						        <!-- <div> -->
+						        <div class="buttons">
+						        	<button>REGISTER</button>
+						            <!-- <input type="submit" name="submit" class="button" id="submit_btn" value="REGISTER"/> -->
 						        </div>
 							 </form>
 							<br> </br>
