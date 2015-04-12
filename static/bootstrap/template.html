@@ -53,9 +53,18 @@
         </div>
 
         <!--buttons for post -->
-        <div class="col-xs-3" id="agree">AGREE</div>
-        <div class="col-xs-3" id="neutral">NEUTRAL</div>
-        <div class="col-xs-3" id="disagree">DISAGREE</div>
+        <div class="col-xs-3">
+          <button id="disagree" onclick="vote(this, INSERT_ID)"> DISAGREE </button>
+          <p class="counter" id="disagree_count"> </p>
+        </div>
+        <div class="col-xs-3">
+          <button id="neutral" onclick="vote(this, INSERT_ID)"> NEUTRAL </button>
+          <p class="counter" id="neutral_count"> </p>
+        </div>
+        <div class="col-xs-3">
+          <button id="agree" onclick="vote(this, INSERT_ID)"> AGREE </button>
+          <p class="counter" id="agree_count"> </p>
+        </div>
         <div class="col-xs-3" id="author"><a href="#" id="author_link">AUTHOR</a></div>
 
       </div>
@@ -66,7 +75,7 @@
       <div class="row" id="procons">
 
         <div class="col-xs-6" id="pros">
-          PROS
+          <h3 class="big_label"> FOR </h3>
           <ul id="prolist">
             <li>asdf</li>
           </ul>
@@ -74,9 +83,9 @@
         <!--comment submission form-->
         <form onsubmit="submit_arg(this, INSERT_ID, true)">
           <div class="form-group">
-            <label for="newpro">new pro</label> 
-            <textarea class="form-control" id="newprotitle" placeholder="Title your argument">
-            <textarea class="form-control" id="newpro" placeholder="Enter new pro">
+            <label for="newpro">New Argument For</label> 
+            <input class="form-control" id="newprotitle" placeholder="Title your argument">
+            <textarea class="form-control" id="newpro" placeholder="Enter new pro"> </textarea>
           </div>
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
@@ -84,7 +93,7 @@
         </div>
 
         <div class="col-xs-6" id="cons">
-          CONS
+          <h3 class="big_label"> AGAINST </h3>
           <ul id="conlist">
             <li>asdf</li>
           </ul>
@@ -92,9 +101,9 @@
           <!--comment submission form-->
           <form onsubmit="submit_arg(this, INSERT_ID, false)">
             <div class="form-group">
-              <label for="newcon">new con</label>
-              <textarea class="form-control" id="newcontitle" placeholder="Title your argument">
-              <textarea class="form-control" id="newcon" placeholder="Enter new con">
+              <label for="newcon">New Argument Against</label>
+              <input class="form-control" id="newcontitle" placeholder="Title your argument"> 
+              <textarea class="form-control" id="newcon" placeholder="Enter new con"> </textarea>
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
           </form>

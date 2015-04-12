@@ -36,6 +36,21 @@ def load_arguments():
 			arguments = {}
 	return arguments
 
+def load_philos():
+	d = os.listdir('./python')
+	if not 'philos.json' in d:
+		open('./python/philos.json','w').close()
+		philos = {}
+	else:
+		try:
+			fl = open('./python/philos.json','r')
+			philos = json.loads(fl.read())
+			fl.close()
+		except:
+			open('./python/philos.json','w').close()
+			philos = {}
+	return philos
+
 def save_users(users):
 	out = open('./python/users.json', 'w')
 	out.write(json.dumps(users))
@@ -44,6 +59,11 @@ def save_users(users):
 def save_arguments(arguments):
 	out = open('./python/arguments.json', 'w')
 	out.write(json.dumps(arguments))
+	out.close()
+
+def save_philos(philos):
+	out = open('./python/philos.json', 'w')
+	out.write(json.dumps(philos))
 	out.close()
 
 ''' END OF STUFF THAT SHOULD BE REPLACED '''
