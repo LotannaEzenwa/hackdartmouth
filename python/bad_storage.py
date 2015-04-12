@@ -35,7 +35,7 @@ def save_users(users):
 
 def save_arguments(arguments):
 	out = open('./python/arguments.json', 'w')
-	out.write(json.dumps(users))
+	out.write(json.dumps(arguments))
 	out.close()
 
 ''' END OF STUFF THAT SHOULD BE REPLACED '''

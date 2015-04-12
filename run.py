@@ -37,30 +37,39 @@ class Login:
 	def LOGIN(self):
 		user_data = web.input()
 		users = load_users() # REPLACE LATER
-		good_user = False
-		if user_data.username in users:
-			if user_data.password == users[user_data.username]:
-				good_user = True
+		good_user = True
+		# good_user = False
+		# if user_data.username in users:
+		# 	if user_data.password == users[user_data.username]:
+		# 		good_user = True
 
 		if good_user:
 			web.setcookie('loggedin', user_data.username, expires="", domain=None, secure=False)
 			raise web.seeother('/')
-		else:
-			raise web.
+		# else:
+		# 	raise web.
 
 class Page:
 	def GET(self, ID):
-		return 
+		fl = open('./static/bootstrap/template.html')
+		text = fl.read().replace('INSERT_ID', ID)
+		fl.close()
+		return text
 
 class Add_Argument:
 	def POST(self):
 		data = web.input()
 		arguments = load_arguments() # REPLACE LATER
-		next_ID = str(list(arguments)[-1][0]) + 1
+		# print list(arguments)
+		# print map(int, list(arguments))
+		# print sorted(map(int, list(arguments)))
+		next_ID = sorted(map(int, list(arguments)))[-1] + 1
+		print next_ID
 
 		arguments[str(next_ID)] = {
+			'title': data.title,
 			'text': data.text, 
-			'mom': data.mom_ID, 
+			'mom': data.mom, 
 			'pro_sons':[], 
 			'con_sons':[], 
 			'supporters':[],
@@ -68,11 +77,19 @@ class Add_Argument:
 			'author': web.cookies().get('loggedin')
 		}
 
-		if data.pro == True:
-			arguments[str(data.mom_id)].pro_sons.append(next_ID)
+		# data.
+		print data.pro
+		if data.pro == 'true':
+			print 'here'
+			arguments[str(data.mom)]['pro_sons'].append(next_ID)
+			# arguments[str(data.mom)]['pro_sons'] = list(set(arguments[str(data.mom)]['pro_sons']))
 		else:
-			arguments[str(data.mom_id)].con_sons.append(next_ID)
+			arguments[str(data.mom)]['con_sons'].append(next_ID)
+			# arguments[str(data.mom)]['con_sons'] = list(set(arguments[str(data.mom)]['con_sons']))
 		save_arguments(arguments)
+		print arguments
+
+		return next_ID
 
 class Get_Argument:
 	def GET(self):
