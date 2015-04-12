@@ -12,9 +12,13 @@ def load_users():
 		open('./python/users.json','w').close()
 		users = {}
 	else:
-		fl = open('./python/users.json','r')
-		users = json.loads(fl.read())
-		fl.close()
+		try:
+			fl = open('./python/users.json','r')
+			users = json.loads(fl.read())
+			fl.close()
+		except:
+			open('./python/users.json','w').close()
+			users = {}
 	return users
 
 def load_arguments():
@@ -23,9 +27,13 @@ def load_arguments():
 		open('./python/arguments.json','w').close()
 		arguments = {}
 	else:
-		fl = open('./python/arguments.json','r')
-		arguments = json.loads(fl.read())
-		fl.close()
+		try:
+			fl = open('./python/arguments.json','r')
+			arguments = json.loads(fl.read())
+			fl.close()
+		except:
+			open('./python/arguments.json','w').close()
+			arguments = {}
 	return arguments
 
 def save_users(users):

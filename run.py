@@ -82,10 +82,8 @@ class Add_Argument:
 		if data.pro == 'true':
 			print 'here'
 			arguments[str(data.mom)]['pro_sons'].append(next_ID)
-			# arguments[str(data.mom)]['pro_sons'] = list(set(arguments[str(data.mom)]['pro_sons']))
 		else:
 			arguments[str(data.mom)]['con_sons'].append(next_ID)
-			# arguments[str(data.mom)]['con_sons'] = list(set(arguments[str(data.mom)]['con_sons']))
 		save_arguments(arguments)
 		print arguments
 
